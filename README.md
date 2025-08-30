@@ -1,5 +1,15 @@
 # DBF 2024-2025 
-Repo for optimization code using Aerosandbox
+This repo showcases the final optimization code for initial sizing of the MIT DBF 2025 plane: AdaSOARus. The code has gone through a few iterations. The optimizer contained here was written after the first/second prototype and test flight. 
+
+## How Should This Repo Be Used?
+There's a major misconception about the purpose of an MDO code like this, which often leads to quite undesirable or otherwise misadvised design choices. The main purpose of a code like this is to allow an engineer to explore the design space and get a feel for the objective function. Importantly, you want to develop an understanding of how changing the variables and their constraints changes the convergence of the 'optimized' aircraft.
+
+What do we actually mean by the word 'optimized'? Here's a big point to get across: 'optimized' does not mean that this is the optimal aircraft for the given mission. The converged aircraft here happens to be the 'optimal' design to the design problem we have posed to it. This is often *very* different from the actual objective. The point here is: do not take optimizer results as a godsend. They're not. If the converged result feels wrong, it likely is. 
+
+A quick recap of how we used this code:
+When we defined the original problem, our aircraft converged to a very quick, very large aircraft (wing area of $1.3m^2$! -- much larger than we're used to). However, after testing some constraints, we noticed that constraining S==0.9, the objective score decreased by a fraction of a percent. After a discussion, we determined $0.9m^2$ the conservative solution would be to build a slightly smaller aircraft, and carry a slightly lighter payload (after refining our models with testing data, our optimal wing area converged to $0.89m^2$, so we were quite close!).
+
+I mention this story because this is a perfect example of how this code should be used. We have a design unknown: wing area. We want to explore what a "good" wing area is, and how sensitive our performance is to this variable. Using this information, we can use our own design judgement to design a better aircraft than designed by optimizer alone. I hope this humble story of a small DBF team (who still finished very poorly because of structures, not code!), helps you enter the lovely world of vehicle design optimization.
 
 ## Quick How-To:
 ### Installation
@@ -8,36 +18,19 @@ Repo for optimization code using Aerosandbox
 
    Use the following command to clone this repository to your local machine:
    ```bash
-   git clone https://github.com/p108771953/DBF_2025.git
+   git clone https://github.com/tarasykm/DBF25-CodeCache.git
    ```
 
-2. **Navigate to the Project Directory**
-
-   Move into the directory of the cloned repository:
-   ```bash
-   cd DBF_2025
-   ```
-
-3. **Set Up a Virtual Environment (Optional but Recommended)**
+2. **Set Up a Virtual Environment using .yaml**
 
    Create and activate a virtual environment to avoid dependency conflicts:
-   ```bash
-   python -m venv venv
-   source venv/bin/activate    # On Linux/Mac
-   venv\Scripts\activate       # On Windows
+   ```terminal
+   conda env create -f env.yaml
+   conda activate env
    ```
-
-4. **Install Dependencies**
-
-   Use `pip` to install the required dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
----
 
 ### Usage
-To run a single optimization, use the latest opt. 
+To run a single optimization, use optp2.py.
 
 From the last update of README, this is optp2.py -- the iteration after the first flight test, first committed Jan 10th. 
 
