@@ -47,7 +47,13 @@ The tutorial section is pretty great for understanding how the library works.
 
 Otherwise, feel free to reach out to me and ask any questions, you know how to reach me :)
 
+## Files
 
+### optp2.py
+This is the main optimization code. It's somewhat poorly structured, I apologize, I got better at organizing repos after this. The main goal however is to just go through and see how different parts work. To run: just run the script in your IDE or in your terminal run 'python optp2.py'
+
+### airfoil_selection.py
+This file was used for airfoil evaluation and selection. The code takes an objective function, which is a combination of CLmax, CL/CD at a given CL, x tripping point location and airfoil area to calculate an objective score. This score then ranks airfoils. It can also plot their performance, and output the top N performing airfoils to a .txt.
 
 ## UPDATES:
 ### Feb 4th:
