@@ -6,7 +6,8 @@ There's a major misconception about the purpose of an MDO code like this, which 
 
 What do we actually mean by the word 'optimized'? Here's a big point to get across: 'optimized' does not mean that this is the optimal aircraft for the given mission. The converged aircraft here happens to be the 'optimal' design to the design problem we have posed to it. This is often *very* different from the actual objective. The point here is: do not take optimizer results as a godsend. They're not. If the converged result feels wrong, it likely is. 
 
-A quick recap of how we used this code:
+A quick recap of how we used this code, as an example:
+
 When we defined the original problem, our aircraft converged to a very quick, very large aircraft (wing area of $1.3m^2$! -- much larger than we're used to). However, after testing some constraints, we noticed that constraining S==0.9, the objective score decreased by a fraction of a percent. After a discussion, we determined $0.9m^2$ the conservative solution would be to build a slightly smaller aircraft, and carry a slightly lighter payload (after refining our models with testing data, our optimal wing area converged to $0.89m^2$, so we were quite close!).
 
 I mention this story because this is a perfect example of how this code should be used. We have a design unknown: wing area. We want to explore what a "good" wing area is, and how sensitive our performance is to this variable. Using this information, we can use our own design judgement to design a better aircraft than designed by optimizer alone. I hope this humble story of a small DBF team (who still finished very poorly because of structures, not code!), helps you enter the lovely world of vehicle design optimization.
