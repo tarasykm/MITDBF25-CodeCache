@@ -8,7 +8,7 @@ What do we actually mean by the word 'optimized'? Here's a big point to get acro
 
 A quick recap of how we used this code, as an example:
 
-When we defined the original problem, our aircraft converged to a very quick, very large aircraft (wing area of $1.3m^2$! -- much larger than we're used to). However, after testing some constraints, we noticed that constraining S==0.9, the objective score decreased by a fraction of a percent. After a discussion, we determined the conservative solution would be to build a slightly smaller aircraft and carry a somewhat lighter payload; So we designed an aircraft with S=$0.9m^2$ (after refining our models with testing data, our optimal wing area converged to $0.89m^2$, so we were quite close!).
+When we defined the original problem, our aircraft converged to a very quick, very large aircraft (wing area of $1.3m^2$! -- much larger than we're used to). However, after testing some constraints, we noticed that constraining S==0.9, the objective score decreased by a fraction of a percent. After a discussion, we determined the conservative solution would be to build a slightly smaller aircraft and carry a somewhat lighter payload; So we designed an aircraft with S= $0.9m^2$ (after refining our models with testing data, our optimal wing area converged to $0.89m^2$, so we were quite close!).
 
 I mention this story because this is a perfect example of how this code should be used. We have a design unknown: wing area. We want to explore what a "good" wing area is, and how sensitive our performance is to this variable. Using this information, we can use our own design judgement to design a better aircraft than designed by optimizer alone. I hope this humble story of a small DBF team (who still finished very poorly because of structures, not code!), helps you enter the lovely world of vehicle design optimization.
 
@@ -109,3 +109,4 @@ opt.py will no longer be edited, changes after first flight test are applied to 
 
 
 Results seem stable, but overzealous on taper. I think it has to do with an overestimate of rib mass, but could aslo be induced drag. Could also be that a 0.1 taper ratio is optimal "technically" disregarding manufacturing difficulty, in which case, the lower bound should be raised due to manufacturing considerations.
+
